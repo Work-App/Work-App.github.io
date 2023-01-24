@@ -12,7 +12,7 @@ function calculateShift() {
   break_asked = document.getElementById("break_had").value;
   break_length = document.getElementById("break_length").value;
   work_details = document.getElementById("work_details").value;
-  todayDate = document.getElementById("date2").value;
+  todayDate = String(document.getElementById("date2").value);
 
   //validate input
   if (
