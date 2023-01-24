@@ -34,7 +34,7 @@ function calculateShift() {
     parseFloat(total_worked_hours) - parseFloat(break_length) / 60;
 
   //Calculate worked hours
-  var net_pay = parseFloat(final_worked_hours * 15.65);
+  var net_pay = parseFloat(final_worked_hours * 15.65).toFixed(2);
 
   //Display the Net Pay
   document.getElementById("totalPay").style.display = "block";
@@ -124,7 +124,8 @@ function calculateShift() {
     };
 
     // querying the db
-    // one data piece = const idQuery = store.get(4);
+    const idQuery = store.get(51);
+    console.log(idQuery);
 
     // querying indexes
     const workDetailQuery = workDetailIndex.getAll(["Bad."]);
