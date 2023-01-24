@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title></title>
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="workapp.css" />
+  </head>
+  <body>
+    <div id="container">
+      <h1>Work App</h1>
+      <div id="calculator">
+        <form>
+          <p>How many hours did you work?</p>
+          <p>
+            <input id="hours_worked" type="number" placeholder="Hours Worked" />
+            hrs
+          </p>
+
+          <p>How many minutes did you work?</p>
+          <p>
+            <input
+              id="minutes_worked"
+              type="number"
+              placeholder="Minutes Worked"
+            />
+            mins
+          </p>
+
+          <p>Did you have a break?</p>
+          <p><input id="break_had" type="text" placeholder="Yes/No" /></p>
+
+          <p>How many minutes was the break?</p>
+          <p>
+            <input
+              id="break_length"
+              type="number"
+              placeholder="Minutes Worked"
+            />
+            mins
+          </p>
+        </form>
+
+        <button type="button" id="calculatevar">Record!</button>
+      </div>
+      <div id="totalPay">
+        $<span id="pay">0.00</span> <small id="each">each</small>
+      </div>
+    </div>
+    <script src="workapp.js"></script>
+    <script src="database.js"></script>
+  </body>
+</html>
