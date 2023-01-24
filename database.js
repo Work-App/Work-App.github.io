@@ -761,7 +761,7 @@ let dict1 = {
       Details:
         "Very hard, non-stop work and I was on the table alone for around 2 hours.",
     },
-    60: {
+    49: {
       date: "2023-01-15 22:22:41",
       total_time_shift: 4.133333333333334,
       total_break_time: 0.0,
@@ -770,7 +770,7 @@ let dict1 = {
       money_made: "$64.69",
       Details: "mid",
     },
-    61: {
+    50: {
       date: "2023-01-21 22:22:19",
       total_time_shift: 4.083333333333333,
       total_break_time: 0.0,
@@ -787,7 +787,6 @@ let newDict = {};
 for (let i = 1; i <= Object.keys(dict1["shifts"]).length; i++) {
   let dicti = {};
   let string = "new_financial" + i.toString();
-  console.log(i, dict1, dict1["shifts"][i]["date"]);
   dicti["date"] = dict1["shifts"][i]["date"];
   dicti["time_on_shift"] = dict1["shifts"][i]["total_time_shift"];
   dicti["total_break_time"] = dict1["shifts"][i]["total_break_time"];
@@ -837,7 +836,6 @@ request.onupgradeneeded = function () {
 request.onsuccess = function () {
   // reference to db
   const db = request.result;
-  console.log("done");
 
   // Create a transaction
   const transaction = db.transaction("shift", "readwrite");
