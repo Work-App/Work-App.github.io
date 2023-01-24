@@ -4,17 +4,16 @@ var total_worked_hours,
   break_asked,
   work_details,
   break_length,
-  idNumber,
-  todayDate;
+  idNumber;
 function calculateShift() {
   var minutes_worked = document.getElementById("minutes_worked").value;
   var hours_worked = document.getElementById("hours_worked").value;
-  break_asked = document.getElementById("break_had").value;
+  break_asked = document.getElementById("break_asked").value;
   break_length = document.getElementById("break_length").value;
   work_details = document.getElementById("work_details").value;
-  todayDate = String(document.getElementById("date2").value);
 
   //validate input
+
   if (
     minutes_worked === "" ||
     hours_worked == "" ||
@@ -35,13 +34,7 @@ function calculateShift() {
     parseFloat(total_worked_hours) - parseFloat(break_length) / 60;
 
   //Calculate worked hours
-  var gross_pay = parseFloat((final_worked_hours * 15.65).toFixed(2));
-
-  //Calculate Vacation Every
-  var vacation_every = (gross_pay * 0.04).toFixed(2);
-
-  //Calculate Net Pay
-  net_pay = parseFloat(gross_pay) + parseFloat(vacation_every);
+  var net_pay = parseFloat(final_worked_hours * 15.65);
 
   //Display the Net Pay
   document.getElementById("totalPay").style.display = "block";
@@ -110,7 +103,7 @@ function calculateShift() {
         " " +
         [d.getHours(), d.getMinutes(), d.getSeconds()].join(":");
 
-    // var todayDate = dformat.toString();
+    var todayDate = dformat.toString();
 
     // Find the id
     var allRecords = store.getAll();
