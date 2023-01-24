@@ -4,13 +4,15 @@ var total_worked_hours,
   break_asked,
   work_details,
   break_length,
-  idNumber;
+  idNumber,
+  todayDate;
 function calculateShift() {
   var minutes_worked = document.getElementById("minutes_worked").value;
   var hours_worked = document.getElementById("hours_worked").value;
   break_asked = document.getElementById("break_had").value;
   break_length = document.getElementById("break_length").value;
   work_details = document.getElementById("work_details").value;
+  todayDate = document.getElementById("date2").value;
 
   //validate input
   if (
@@ -108,12 +110,12 @@ function calculateShift() {
         " " +
         [d.getHours(), d.getMinutes(), d.getSeconds()].join(":");
 
-    var todayDate = dformat.toString();
+    // var todayDate = dformat.toString();
 
     // Find the id
     var allRecords = store.getAll();
     allRecords.onsuccess = function () {
-      idNumber = Object.keys(allRecords.result).length;
+      idNumber = Object.keys(allRecords.result).length + 1;
       console.log("Current ID number", idNumber);
       // Add data to db
       store.put({
