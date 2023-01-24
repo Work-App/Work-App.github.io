@@ -787,6 +787,7 @@ let newDict = {};
 for (let i = 1; i <= Object.keys(dict1["shifts"]).length; i++) {
   let dicti = {};
   let string = "new_financial" + i.toString();
+  console.log(i, dict1, dict1["shifts"][i]["date"]);
   dicti["date"] = dict1["shifts"][i]["date"];
   dicti["time_on_shift"] = dict1["shifts"][i]["total_time_shift"];
   dicti["total_break_time"] = dict1["shifts"][i]["total_break_time"];
@@ -836,6 +837,7 @@ request.onupgradeneeded = function () {
 request.onsuccess = function () {
   // reference to db
   const db = request.result;
+  console.log("done");
 
   // Create a transaction
   const transaction = db.transaction("shift", "readwrite");
