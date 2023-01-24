@@ -761,6 +761,24 @@ let dict1 = {
       Details:
         "Very hard, non-stop work and I was on the table alone for around 2 hours.",
     },
+    60: {
+      date: "2023-01-15 22:22:41",
+      total_time_shift: 4.133333333333334,
+      total_break_time: 0.0,
+      "Was asked for a break?": "yes",
+      total_time_worked: 4.133333333333334,
+      money_made: "$64.69",
+      Details: "mid",
+    },
+    61: {
+      date: "2023-01-21 22:22:19",
+      total_time_shift: 4.083333333333333,
+      total_break_time: 0.0,
+      "Was asked for a break?": "yes",
+      total_time_worked: 4.083333333333333,
+      money_made: "$63.90",
+      Details: "Mid.",
+    },
   },
 };
 
