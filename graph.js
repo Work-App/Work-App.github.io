@@ -62,12 +62,12 @@ openRequest.onsuccess = (event) => {
     }
 
     let sum = 0;
-
-    for (i = 0; i != 50; i++) {
+    console.log(yValues.length);
+    for (i = 0; i != yValues.length; i++) {
       sum += parseFloat(yValues[i]);
     }
 
-    let average = sum / 50;
+    let average = sum / yValues.length;
 
     averageValues = [];
 
