@@ -24,6 +24,8 @@ function calculateShift() {
     alert("Please enter values");
     return;
   }
+  // Make Grapher button disappear
+  document.getElementById("grapher").style.display = "none";
 
   //Calculate work hours
   total_worked_hours =
@@ -115,11 +117,11 @@ function calculateShift() {
         id: idNumber,
         day: todayDate,
         time_on_shift: total_worked_hours,
-        total_break_time: break_length,
+        total_break_time: parseInt(break_length),
         hours_worked: final_worked_hours,
         break_asked: break_asked,
         work_details: work_details,
-        net_pay: net_pay,
+        net_pay: parseFloat(net_pay),
       });
     };
 

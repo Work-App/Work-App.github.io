@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./graph.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="graph">
+      <h1 style="text-align: center">Salary Graph</h1>
+
+      <a href="index.html"
+        ><button type="button" id="index">Go Back!</button></a
+      >
+      <canvas id="myChart" style="width: 100%; max-width: 700px"></canvas>
+      <div id="average">
+        <p id="averageMoneyMade">Average $ made per shift : $</p>
+      </div>
+    </div>
+  </body>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+  <script src="./graph.js"></script>
+</html>
