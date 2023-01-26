@@ -5,12 +5,19 @@ var total_worked_hours,
   work_details,
   break_length,
   idNumber;
+
 function calculateShift() {
   var minutes_worked = document.getElementById("minutes_worked").value;
   var hours_worked = document.getElementById("hours_worked").value;
   break_asked = document.getElementById("break_asked").value;
   break_length = document.getElementById("break_length").value;
   work_details = document.getElementById("work_details").value;
+  var wage = localStorage.getItem("wage");
+
+  if (wage == null) {
+    wage = 15.65;
+    localStorage.setItem("wage", wage);
+  }
 
   //validate input
 
@@ -36,7 +43,7 @@ function calculateShift() {
     parseFloat(total_worked_hours) - parseFloat(break_length) / 60;
 
   //Calculate worked hours
-  var net_pay = parseFloat(final_worked_hours * 15.65).toFixed(2);
+  var net_pay = parseFloat(final_worked_hours * wage).toFixed(2);
 
   //Display the Net Pay
   document.getElementById("totalPay").style.display = "block";
