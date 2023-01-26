@@ -81,3 +81,27 @@ a:active {
 #save {
   margin: 100px auto;
 }
+
+@media only screen and (max-width: 500px) {
+  #container {
+    width: 325px;
+  }
+
+  .option {
+    margin: 5%;
+    display: contents;
+    width: 30%;
+    text-align: center;
+  }
+
+  #text {
+    margin-top: 50px;
+    font-size: 20px;
+  }
+
+  input {
+    height: 25px;
+    font-size: 20px;
+    width: 200px;
+  }
+}
