@@ -1,3 +1,4 @@
+// Initiate global variables
 var total_worked_hours,
   final_worked_hours,
   net_pay,
@@ -6,7 +7,10 @@ var total_worked_hours,
   break_length,
   idNumber;
 
+// Function Calculate Shift
+
 function calculateShift() {
+  // Set Variables
   var minutes_worked = document.getElementById("minutes_worked").value;
   var hours_worked = document.getElementById("hours_worked").value;
   break_asked = document.getElementById("break_asked").value;
