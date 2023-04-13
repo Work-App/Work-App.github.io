@@ -16,6 +16,7 @@ let firstChart;
 document.getElementById("linear-graph").onclick = function () {
   if (linear == false) {
     linear = true;
+    resetGraph();
   } else {
     linear = false;
   }
