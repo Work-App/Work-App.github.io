@@ -11,6 +11,7 @@ const openRequest = indexedDB.open("workappDB", 1);
 let linear = false;
 let sum = 0;
 let sumList = [];
+let firstChart;
 
 document.getElementById("linear-graph").onclick = function () {
   if (linear == false) {
@@ -23,8 +24,24 @@ document.getElementById("linear-graph").onclick = function () {
 };
 
 function resetGraph() {
+  // firstChart.data.datasets[0].data = sumList;
+  firstChart.hide(1);
+
+  /*
   if (linear == true) {
-    new Chart("myChart", {
+    if (typeof firstChart == "undefined") {
+      //pass
+    } else {
+      firstChart.destroy();
+    }
+
+    if (oldChartHTML.style.display == "none") {
+      // pass
+    } else {
+      oldChartHTML.style.display = "none";
+    }
+
+    NewChart = new Chart("newChart", {
       type: "line",
       data: {
         labels: xValues,
@@ -44,34 +61,43 @@ function resetGraph() {
 
     document.getElementById("averageMoneyMade").style.display = "none";
   } else {
-    new Chart("myChart", {
-      type: "line",
-      data: {
-        labels: xValues,
-        datasets: [
-          {
-            label: "Net Pay",
-            data: yValues,
-            borderColor: "blue",
-            fill: true,
-          },
-          {
-            label: "Average Net Pay",
-            data: averageValues,
-            borderColor: "black",
-            fill: false,
-            pointRadius: 0,
-          },
-        ],
-      },
-      options: {
-        legend: { display: true },
-      },
-    });
+    if (newChartHTML.style.display == "none") {
+      // pass
+    } else {
+      newChartHTML.style.display = "none";
+    }
 
+    if (typeof oldChartHTML == "null") {
+      // null
+    } else {
+      OldChart = new Chart("oldChart", {
+        type: "line",
+        data: {
+          labels: xValues,
+          datasets: [
+            {
+              label: "Net Pay",
+              data: yValues,
+              borderColor: "blue",
+              fill: true,
+            },
+            {
+              label: "Average Net Pay",
+              data: averageValues,
+              borderColor: "black",
+              fill: false,
+              pointRadius: 0,
+            },
+          ],
+        },
+        options: {
+          legend: { display: true },
+        },
+      });
+    }
     document.getElementById("averageMoneyMade").innerHTML =
       "Average money made per shift : $" + average.toFixed(2);
-  }
+  }*/
 }
 
 openRequest.onerror = function (event) {
@@ -140,7 +166,7 @@ openRequest.onsuccess = (event) => {
       averageValues.push(average);
     }
 
-    new Chart("myChart", {
+    firstChart = new Chart("myChart", {
       type: "line",
       data: {
         labels: xValues,
