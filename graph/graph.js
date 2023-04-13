@@ -28,7 +28,7 @@ function resetGraph() {
   firstChart.data.datasets[0].data = sumList;
 
   firstChart.data.datasets.splice(1);
-  myLineChart.update();
+  firstChart.update();
 
   /*
   if (linear == true) {
