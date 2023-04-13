@@ -32,11 +32,18 @@ function resetGraph() {
   } else {
     firstChart.data.datasets[0].data = yValues;
 
-    firstChart.data.datasets[1].label = "Average Net Pay";
+    firstChart.data.datasets[1] = {
+      label: "Average Net Pay",
+      data: averageValues,
+      borderColor: "black",
+      fill: false,
+      pointRadius: 0,
+    };
+    /*firstChart.data.datasets[1].label = "Average Net Pay";
     firstChart.data.datasets[1].data = averageValues;
     firstChart.data.datasets[1].borderColor = "black";
     firstChart.data.datasets[1].fill = false;
-    firstChart.data.datasets[1].pointRadius = 0;
+    firstChart.data.datasets[1].pointRadius = 0;*/
 
     firstChart.update();
   }
