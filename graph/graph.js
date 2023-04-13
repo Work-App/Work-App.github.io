@@ -9,6 +9,8 @@ const indexedDB =
 const openRequest = indexedDB.open("workappDB", 1);
 
 let linear = false;
+let sum = 0;
+let sumList = [];
 
 document.getElementById("linear-graph").onclick = function () {
   if (linear == false) {
@@ -19,6 +21,58 @@ document.getElementById("linear-graph").onclick = function () {
 
   console.log(linear);
 };
+
+function resetGraph() {
+  if (linear == true) {
+    new Chart("myChart", {
+      type: "line",
+      data: {
+        labels: xValues,
+        datasets: [
+          {
+            label: "Money Made",
+            data: sumList,
+            borderColor: "blue",
+            fill: true,
+          },
+        ],
+      },
+      options: {
+        legend: { display: true },
+      },
+    });
+
+    document.getElementById("averageMoneyMade").style.display = "none";
+  } else {
+    new Chart("myChart", {
+      type: "line",
+      data: {
+        labels: xValues,
+        datasets: [
+          {
+            label: "Net Pay",
+            data: yValues,
+            borderColor: "blue",
+            fill: true,
+          },
+          {
+            label: "Average Net Pay",
+            data: averageValues,
+            borderColor: "black",
+            fill: false,
+            pointRadius: 0,
+          },
+        ],
+      },
+      options: {
+        legend: { display: true },
+      },
+    });
+
+    document.getElementById("averageMoneyMade").innerHTML =
+      "Average money made per shift : $" + average.toFixed(2);
+  }
+}
 
 openRequest.onerror = function (event) {
   console.log("An error has occured with Indexed DB");
@@ -65,93 +119,53 @@ function query(db, myCallbackFunction) {
 // Open the database and then run the query
 openRequest.onsuccess = (event) => {
   db = openRequest.result;
-  if (linear == false) {
-    query(db, (data = []) => {
-      // This gets called when the query has run with the loaded
-      // data
-      for (const row of data) {
-        yValues.push(row["net_pay"]);
-        xValues.push(row["id"]);
-      }
+  query(db, (data = []) => {
+    // This gets called when the query has run with the loaded
+    // data
+    for (const row of data) {
+      yValues.push(row["net_pay"]);
+      xValues.push(row["id"]);
+    }
 
-      let sum = 0;
-      console.log(yValues.length);
-      for (i = 0; i != yValues.length; i++) {
-        sum += parseFloat(yValues[i]);
-      }
+    for (i = 0; i != yValues.length; i++) {
+      sum += parseFloat(yValues[i]);
+      sumList.push(sum);
+    }
 
-      let average = sum / yValues.length;
+    let average = sum / yValues.length;
 
-      averageValues = [];
+    averageValues = [];
 
-      for (let i = 1; i <= yValues.length; i++) {
-        averageValues.push(average);
-      }
+    for (let i = 1; i <= yValues.length; i++) {
+      averageValues.push(average);
+    }
 
-      new Chart("myChart", {
-        type: "line",
-        data: {
-          labels: xValues,
-          datasets: [
-            {
-              label: "Net Pay",
-              data: yValues,
-              borderColor: "blue",
-              fill: true,
-            },
-            {
-              label: "Average Net Pay",
-              data: averageValues,
-              borderColor: "black",
-              fill: false,
-              pointRadius: 0,
-            },
-          ],
-        },
-        options: {
-          legend: { display: true },
-        },
-      });
-
-      document.getElementById("averageMoneyMade").innerHTML =
-        "Average money made per shift : $" + average.toFixed(2);
+    new Chart("myChart", {
+      type: "line",
+      data: {
+        labels: xValues,
+        datasets: [
+          {
+            label: "Net Pay",
+            data: yValues,
+            borderColor: "blue",
+            fill: true,
+          },
+          {
+            label: "Average Net Pay",
+            data: averageValues,
+            borderColor: "black",
+            fill: false,
+            pointRadius: 0,
+          },
+        ],
+      },
+      options: {
+        legend: { display: true },
+      },
     });
-  } else {
-    query(db, (data = []) => {
-      // This gets called when the query has run with the loaded
-      // data
-      for (const row of data) {
-        yValues.push(row["net_pay"]);
-        xValues.push(row["id"]);
-      }
 
-      let sum = 0;
-      let sumList = [];
-      console.log(yValues.length);
-      for (i = 0; i != yValues.length; i++) {
-        sum += parseFloat(yValues[i]);
-        sumList.push(sum);
-      }
-
-      new Chart("myChart", {
-        type: "line",
-        data: {
-          labels: xValues,
-          datasets: [
-            {
-              label: "Money Made",
-              data: sumList,
-              borderColor: "blue",
-              fill: true,
-            },
-          ],
-        },
-        options: {
-          legend: { display: true },
-        },
-      });
-
-      document.getElementById("averageMoneyMade").style.display = "none";
-    });
-  }
+    document.getElementById("averageMoneyMade").innerHTML =
+      "Average money made per shift : $" + average.toFixed(2);
+  });
 };
