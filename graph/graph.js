@@ -16,21 +16,26 @@ let firstChart;
 document.getElementById("linear-graph").onclick = function () {
   if (linear == false) {
     linear = true;
-    resetGraph();
   } else {
     linear = false;
   }
-
-  console.log(linear);
+  resetGraph();
 };
 
 function resetGraph() {
-  firstChart.data.datasets[0].data = sumList;
+  if (linear == true) {
+    firstChart.data.datasets[0].data = sumList;
 
-  firstChart.data.datasets.splice(1);
-  firstChart.update();
+    firstChart.data.datasets.hide(1);
+    firstChart.update();
+  } else {
+  }
 
   /*
+  firstChart.data.datasets[0].data = sumList;
+
+    firstChart.data.datasets[1];
+    firstChart.update();
   if (linear == true) {
     if (typeof firstChart == "undefined") {
       //pass
