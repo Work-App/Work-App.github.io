@@ -18,6 +18,7 @@ document.getElementById("linear-graph").onclick = function () {
   }
 
   console.log(linear);
+  window.location.reload();
 };
 
 openRequest.onerror = function (event) {
