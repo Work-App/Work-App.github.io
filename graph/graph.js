@@ -25,8 +25,10 @@ document.getElementById("linear-graph").onclick = function () {
 };
 
 function resetGraph() {
-  // firstChart.data.datasets[0].data = sumList;
-  firstChart.hide(1);
+  firstChart.data.datasets[0].data = sumList;
+
+  firstChart.data.datasets.splice(1);
+  myLineChart.update();
 
   /*
   if (linear == true) {
