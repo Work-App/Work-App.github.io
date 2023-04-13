@@ -12,6 +12,7 @@ let linear = false;
 let sum = 0;
 let sumList = [];
 let firstChart;
+let averageValues;
 
 document.getElementById("linear-graph").onclick = function () {
   if (linear == false) {
@@ -26,16 +27,21 @@ function resetGraph() {
   if (linear == true) {
     firstChart.data.datasets[0].data = sumList;
 
-    firstChart.data.datasets.hide(1);
+    firstChart.data.datasets.splice(1);
     firstChart.update();
   } else {
+    firstChart.data.datasets[0].data = yValues;
+
+    firstChart.data.datasets[1].label = "Average Net Pay";
+    firstChart.data.datasets[1].data = averageValues;
+    firstChart.data.datasets[1].borderColor = "black";
+    firstChart.data.datasets[1].fill = false;
+    firstChart.data.datasets[1].pointRadius = 0;
+
+    firstChart.update();
   }
 
   /*
-  firstChart.data.datasets[0].data = sumList;
-
-    firstChart.data.datasets[1];
-    firstChart.update();
   if (linear == true) {
     if (typeof firstChart == "undefined") {
       //pass
