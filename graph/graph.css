@@ -1,7 +1,7 @@
 #myChart {
   padding: 0 0;
   margin: auto auto;
-  margin-top: 10%;
+  margin-top: 5%;
   display: block;
   height: 200%;
   width: 200%;
@@ -22,15 +22,10 @@ body {
     sans-serif "Courier New", Courier, monospace;
 }
 
-#buttons {
-  display: flex;
-}
-
 button {
   text-transform: uppercase;
   font-weight: bold;
-  display: block;
-  margin: 30px auto;
+  margin: 0px 10px;
   background: aliceblue;
   border-radius: 10px;
   border-width: 5px;
@@ -40,13 +35,17 @@ button {
   color: rgb(0, 0, 0);
 }
 
+#buttons {
+  display: flex;
+  justify-content: center;
+}
+
 button:hover {
   background: rgb(224, 237, 249);
   border-bottom-color: #111;
 }
 
 button:active {
-  position: relative;
   top: 1px;
 }
 
