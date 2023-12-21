@@ -36,12 +36,10 @@ request.onsuccess = function () {
   const passwordIndex = store.index("word");
 
   // Add data to db
-  for (let i = 1; i <= Object.keys(dict1["shifts"]).length; i++) {
-    store.put({
-      id: i,
-      password: newDict[i]["word"],
-    });
-  }
+  store.put({
+    id: 1,
+    password: passwordIndex["word"],
+  });
 
   // querying the db
   // one data piece = const idQuery = store.get(4)
