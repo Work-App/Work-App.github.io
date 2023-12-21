@@ -65,8 +65,8 @@ function calculateShift() {
     };
 
     // querying the db
-    const idQuery = store.get(1);
-    console.log(idQuery);
+    // const idQuery = store.get(1);
+    // console.log(idQuery);
 
     // // querying indexes
     // const workDetailQuery = workDetailIndex.getAll(["Bad."]);
