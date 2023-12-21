@@ -17,7 +17,17 @@ function calculateShift() {
 
   // Request for the indexed DB
   const request = indexedDB.open("workappDB", 1);
-
+  password = document.getElementById("password").value;
+  if (
+    minutes_worked === "" ||
+    hours_worked == "" ||
+    break_asked == "" ||
+    break_length == "" ||
+    work_details == ""
+  ) {
+    alert("Please enter values");
+    return;
+  }
   // Notify user if an error has occured while requesting
   request.onerror = function (event) {
     console.log("An error has occured with Indexed DB");
@@ -31,7 +41,7 @@ function calculateShift() {
       keyPath: "id",
       autoIncrement: true,
     });
-    store.createIndex("password", "word", { unique: false });
+    store.createIndex("password", ["word"], { unique: false });
   };
 
   // onsuccess where all operations occur
@@ -55,7 +65,7 @@ function calculateShift() {
       // Add data to db
       store.put({
         id: idNumber,
-        password: word,
+        password: password,
       });
     };
 
