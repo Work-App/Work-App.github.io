@@ -31,7 +31,7 @@ function calculateShift() {
       keyPath: "id",
       autoIncrement: true,
     });
-    store.createIndex("password", ["word"], { unique: false });
+    store.createIndex("password", "word", { unique: false });
   };
 
   // onsuccess where all operations occur
