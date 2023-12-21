@@ -18,13 +18,7 @@ function calculateShift() {
   // Request for the indexed DB
   const request = indexedDB.open("workappDB", 1);
   password = document.getElementById("password").value;
-  if (
-    minutes_worked === "" ||
-    hours_worked == "" ||
-    break_asked == "" ||
-    break_length == "" ||
-    work_details == ""
-  ) {
+  if (password === "") {
     alert("Please enter values");
     return;
   }
