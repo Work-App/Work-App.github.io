@@ -55,7 +55,7 @@ function calculateShift() {
     console.log(allRecords);
     allRecords.onsuccess = function () {
       idNumber = Object.keys(allRecords.result).length + 1;
-      console.log("Current ID number", Object.keys(allRecords.result));
+      console.log("Current ID number", Object.values(allRecords.result));
       // Add data to db
       store.put({
         id: idNumber,
