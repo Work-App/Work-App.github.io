@@ -61,8 +61,25 @@ function calculateShift() {
         id: idNumber,
         password: password,
       });
+      console.log(password);
     };
 
+    // querying the db
+    const idQuery = store.get(1);
+    console.log(idQuery);
+
+    // // querying indexes
+    // const workDetailQuery = workDetailIndex.getAll(["Bad."]);
+    // const dayQuery = dateIndex.getAll(["2022-07-03 22:31:04"]);
+
+    // Query onsuccess
+    // workDetailQuery.onsuccess = function () {
+    //   console.log("workDetailQuery", workDetailQuery.result);
+    // };
+
+    // dayQuery.onsuccess = function () {
+    //   console.log("dayQuery", dayQuery.result);
+    // };
     // Close transaction and connection to the IndexedDB
     transaction.oncomplete = function () {
       db.close();
