@@ -39,6 +39,8 @@ function calculateShift() {
     // reference to db
     const db = request.result;
 
+    console.log(db);
+
     // Create a transaction
     const transaction = db.transaction("shift", "readwrite");
 
@@ -46,8 +48,11 @@ function calculateShift() {
     const store = transaction.objectStore("shift");
     const passwordIndex = store.index("word");
 
+    console.log(store);
+
     // Find the id
     var allRecords = store.getAll();
+    console.log(allRecords);
     allRecords.onsuccess = function () {
       idNumber = Object.keys(allRecords.result).length + 1;
       console.log("Current ID number", idNumber);
