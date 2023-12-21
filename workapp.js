@@ -44,11 +44,7 @@ function calculateShift() {
     // Create a transaction
     const transaction = db.transaction("shift", "readwrite");
 
-    // Reference to store
     const store = transaction.objectStore("shift");
-    const passwordIndex = store.index("word");
-
-    console.log(store);
 
     // Find the id
     var allRecords = store.getAll();
